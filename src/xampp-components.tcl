@@ -2538,6 +2538,7 @@ $cfg['Servers'][$i]['favorite'] = 'pma__favorite';} \
                 8.0 - 80 { return [versions::get "PHP" 80] }
                 8.1 - 81 { return [versions::get "PHP" 81] }
                 8.2 - 82 { return [versions::get "PHP" 82] }
+                8.3 - 83 { return [versions::get "PHP" 83] }
             }
         }
 
@@ -2547,6 +2548,7 @@ $cfg['Servers'][$i]['favorite'] = 'pma__favorite';} \
                 8.0 - 80 { return [revisions::get "xamppstack" 80] }
                 8.1 - 81 { return [revisions::get "xamppstack" 81] }
                 8.2 - 82 { return [revisions::get "xamppstack" 82] }
+                8.3 - 83 { return [revisions::get "xamppstack" 83] }
             }
         }
         public method configureOptions {} {
@@ -2757,6 +2759,18 @@ $cfg['Servers'][$i]['favorite'] = 'pma__favorite';} \
         } {
             set vtrackerName XAMPP82
             set version [::xampp::php::getXAMPPVersion 82]
+            if {[string match osx* [$be cget -target]]} {
+                set patchList {fix-opcache-support-php-8.OS-X.patch}
+            }
+        }
+    }
+    ::itcl::class php83 {
+        inherit php
+        constructor {environment} {
+            chain $environment
+        } {
+            set vtrackerName XAMPP83
+            set version [::xampp::php::getXAMPPVersion 83]
             if {[string match osx* [$be cget -target]]} {
                 set patchList {fix-opcache-support-php-8.OS-X.patch}
             }

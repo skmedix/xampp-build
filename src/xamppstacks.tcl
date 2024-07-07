@@ -159,6 +159,15 @@
     }
 }
 
+::itcl::class linuxXamppInstaller83Stack {
+    inherit linuxXamppInstaller82Stack
+    constructor {environment} {
+        chain $environment
+    } {
+        replaceComponent ::xampp::php82 ::xampp::php83
+    }
+}
+
 ::itcl::class linux64XamppInstallerStack {
     inherit linuxXamppInstallerStack
     constructor {environment} {
@@ -209,6 +218,13 @@
 }
 ::itcl::class linux64XamppInstaller82Stack {
     inherit linuxXamppInstaller82Stack
+    constructor {environment} {
+        chain $environment
+    } {
+    }
+}
+::itcl::class linux64XamppInstaller83Stack {
+    inherit linuxXamppInstaller83Stack
     constructor {environment} {
         chain $environment
     } {
@@ -323,6 +339,14 @@
         chain $environment
     } {
         replaceComponent ::xampp::php81 ::xampp::php82
+    }
+}
+::itcl::class osx64XamppInstaller83Stack {
+    inherit osx64XamppInstaller82Stack
+    constructor {environment} {
+        chain $environment
+    } {
+        replaceComponent ::xampp::php82 ::xampp::php83
     }
 }
 # XAMPP Installer - standard version
@@ -440,6 +464,20 @@
         return XamppInstallerPhp80Stack
     }
 }
+::itcl::class xamppinstaller81stack {
+    inherit xamppinstallerstack
+    constructor {environment} {
+        chain $environment
+        set version [::xampp::php::getXAMPPVersion 81]
+        set rev [::xampp::php::getXAMPPRevision 81]
+        set application ::xampp::php81
+        set xampp_vcredist_name VS16
+    } {
+    }
+    public method getBaseNameForPlatform {} {
+        return XamppInstallerPhp81Stack
+    }
+}
 ::itcl::class xamppinstaller82stack {
     inherit xamppinstallerstack
     constructor {environment} {
@@ -454,18 +492,18 @@
         return XamppInstallerPhp82Stack
     }
 }
-::itcl::class xamppinstaller81stack {
+::itcl::class xamppinstaller83stack {
     inherit xamppinstallerstack
     constructor {environment} {
         chain $environment
-        set version [::xampp::php::getXAMPPVersion 81]
-        set rev [::xampp::php::getXAMPPRevision 81]
-        set application ::xampp::php81
+        set version [::xampp::php::getXAMPPVersion 83]
+        set rev [::xampp::php::getXAMPPRevision 83]
+        set application ::xampp::php83
         set xampp_vcredist_name VS16
     } {
     }
     public method getBaseNameForPlatform {} {
-        return XamppInstallerPhp81Stack
+        return XamppInstallerPhp83Stack
     }
 }
 
@@ -848,6 +886,23 @@
     }
     public method confFileName {} {
         return xamppinstallerphp82
+    }
+}
+::itcl::class xamppportableinstaller83stack {
+    inherit xamppportableinstallerstack
+    constructor {environment} {
+        chain $environment
+        set version [::xampp::php::getXAMPPVersion 83]
+        set rev [::xampp::php::getXAMPPRevision 83]
+        set application ::xampp::php83
+        set xampp_vcredist_name VS16
+    } {
+    }
+    public method getBaseNameForPlatform {} {
+        return XamppPortableInstallerPhp83Stack
+    }
+    public method confFileName {} {
+        return xamppinstallerphp83
     }
 }
 ::itcl::class xampp {

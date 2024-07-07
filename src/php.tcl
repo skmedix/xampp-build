@@ -269,6 +269,17 @@ proc pearProgram {name args} {
     }
 }
 
+::itcl::class php83WindowsX64 {
+    inherit phpWindowsX64
+    constructor {environment} {
+        chain $environment
+    } {
+        set version [versions::get "PHP" 83]
+        set tarballName php-${version}-Win32-VS16-x64
+        set includePear 1
+    }
+}
+
 ::itcl::class Archive_Tar {
     inherit pearprogram
 

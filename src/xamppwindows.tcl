@@ -1232,6 +1232,17 @@ mssql.secure_connection=Off"
     }
 }
 
+::itcl::class windowsXamppStandardPhp83 {
+    inherit windowsXamppStandardPhp7
+    constructor {environment} {
+    chain $environment
+        set version [::xampp::php::getXAMPPVersion 83]
+        set rev [::xampp::php::getXAMPPRevision 83]
+        set xampp_vcredist_name VS16
+    } {
+    }
+}
+
 ::itcl::class windowsXamppPortable {
     inherit windowsXamppComponent
     protected variable rev 0
@@ -1400,6 +1411,16 @@ mssql.secure_connection=Off"
         chain $environment
         set version [::xampp::php::getXAMPPVersion 82]
         set rev [::xampp::php::getXAMPPRevision 82]
+    } {
+    }
+}
+
+::itcl::class windowsXamppPortablePhp83 {
+    inherit windowsXamppPortablePhp8
+    constructor {environment} {
+        chain $environment
+        set version [::xampp::php::getXAMPPVersion 83]
+        set rev [::xampp::php::getXAMPPRevision 83]
     } {
     }
 }
